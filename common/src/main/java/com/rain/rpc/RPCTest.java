@@ -1,10 +1,11 @@
 package com.rain.rpc;
 
-import com.rain.study.common.test.rpc.api.HelloService;
-import com.rain.study.common.test.rpc.client.RPCClient;
-import com.rain.study.common.test.rpc.server.HelloServiceImpl;
-import com.rain.study.common.test.rpc.server.Server;
-import com.rain.study.common.test.rpc.server.ServiceCenter;
+
+import com.rain.rpc.api.HelloService;
+import com.rain.rpc.client.RPCClient;
+import com.rain.rpc.server.HelloServiceImpl;
+import com.rain.rpc.server.Server;
+import com.rain.rpc.server.ServiceCenter;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;

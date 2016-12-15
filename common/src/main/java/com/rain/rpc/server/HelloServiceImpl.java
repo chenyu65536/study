@@ -1,6 +1,7 @@
 package com.rain.rpc.server;
 
-import com.rain.study.common.test.rpc.api.HelloService;
+
+import com.rain.rpc.api.HelloService;
 
 /**
  * Created by chenyu on 2016/12/14.
