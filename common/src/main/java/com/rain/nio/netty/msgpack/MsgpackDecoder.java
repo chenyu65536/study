@@ -2,6 +2,7 @@ package com.rain.nio.netty.msgpack;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
+import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import io.netty.handler.codec.MessageToMessageDecoder;
 import org.msgpack.MessagePack;
 
@@ -19,5 +20,6 @@ public class MsgpackDecoder extends MessageToMessageDecoder<ByteBuf> {
 
         MessagePack pack = new MessagePack();
         out.add(pack.read(data));
+
     }
 }
