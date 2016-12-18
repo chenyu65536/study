@@ -32,11 +32,11 @@ public class NettyClient {
                 @Override
                 public void initChannel(SocketChannel ch) throws Exception {
                     //解决 半包黏包问题
-                    ch.pipeline().addLast(new LengthFieldBasedFrameDecoder(65536,0,2,0,2));
-                    ch.pipeline().addLast(new LengthFieldPrepender(2));
-                    ch.pipeline().addLast(new MsgpackDecoder());
-                    ch.pipeline().addLast(new MsgpackEncoder());
-                    ch.pipeline().addLast(new ClientHandler());
+                    ch.pipeline().addLast(new LengthFieldBasedFrameDecoder(65536, 0, 2, 0, 2))
+                            .addLast(new LengthFieldPrepender(2))
+                            .addLast(new MsgpackEncoder())
+                            .addLast(new MsgpackDecoder())
+                            .addLast(new NettyServerHandler());
                 }
             });
 
