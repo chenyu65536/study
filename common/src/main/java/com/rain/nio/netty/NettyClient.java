@@ -19,10 +19,7 @@ import io.netty.handler.codec.LengthFieldPrepender;
 
 public class NettyClient {
     public static void main(String[] args) throws Exception {
-        String host = "127.0.0.1";
-        int port = 8080;
         EventLoopGroup workerGroup = new NioEventLoopGroup();
-
         try {
             Bootstrap b = new Bootstrap();
             b.group(workerGroup)
@@ -39,7 +36,9 @@ public class NettyClient {
                                     .addLast(new NettyServerHandler());
                         }
                     });
-
+            
+            String host = "127.0.0.1";
+            int port = 8080;
             ChannelFuture f = b.connect(host, port).sync();
             f.channel().closeFuture().sync();
         } finally {
