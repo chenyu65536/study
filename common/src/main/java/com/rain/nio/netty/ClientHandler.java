@@ -7,8 +7,6 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
  * Created by chenyu on 2016/12/16.
  */
 public class ClientHandler extends ChannelInboundHandlerAdapter {
-
-
     /**
      *  tcp 三次握手成功后建立连接，发送资源，客户端先发送
      * @param ctx
