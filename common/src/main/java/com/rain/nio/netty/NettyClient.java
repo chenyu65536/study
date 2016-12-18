@@ -25,20 +25,20 @@ public class NettyClient {
 
         try {
             Bootstrap b = new Bootstrap();
-            b.group(workerGroup);
-            b.channel(NioSocketChannel.class);
-            b.option(ChannelOption.SO_KEEPALIVE, true);
-            b.handler(new ChannelInitializer<SocketChannel>() {
-                @Override
-                public void initChannel(SocketChannel ch) throws Exception {
-                    //解决 半包黏包问题
-                    ch.pipeline().addLast(new LengthFieldBasedFrameDecoder(65536, 0, 2, 0, 2))
-                            .addLast(new LengthFieldPrepender(2))
-                            .addLast(new MsgpackEncoder())
-                            .addLast(new MsgpackDecoder())
-                            .addLast(new NettyServerHandler());
-                }
-            });
+            b.group(workerGroup)
+                    .channel(NioSocketChannel.class)
+                    .option(ChannelOption.SO_KEEPALIVE, true)
+                    .handler(new ChannelInitializer<SocketChannel>() {
+                        @Override
+                        public void initChannel(SocketChannel ch) throws Exception {
+                            //解决 半包黏包问题
+                            ch.pipeline().addLast(new LengthFieldBasedFrameDecoder(65536, 0, 2, 0, 2))
+                                    .addLast(new LengthFieldPrepender(2))
+                                    .addLast(new MsgpackEncoder())
+                                    .addLast(new MsgpackDecoder())
+                                    .addLast(new NettyServerHandler());
+                        }
+                    });
 
             ChannelFuture f = b.connect(host, port).sync();
             f.channel().closeFuture().sync();
