@@ -23,8 +23,7 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter { // (1)
     }
 
     @Override
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) { // (4)
-        // Close the connection when an exception is raised.
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) {
         cause.printStackTrace();
         ctx.disconnect();
         ctx.close();
