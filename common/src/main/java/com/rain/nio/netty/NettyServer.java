@@ -12,6 +12,7 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
+import io.netty.handler.codec.LengthFieldPrepender;
 
 /**
  * Created by rain on 2016/12/15.
@@ -34,7 +35,9 @@ public class NettyServer {
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         public void initChannel(SocketChannel ch) throws Exception {
+                            //解决 半包黏包问题
                             ch.pipeline().addLast(new LengthFieldBasedFrameDecoder(65536,0,2,0,2));
+                            ch.pipeline().addLast(new LengthFieldPrepender(2));
                             ch.pipeline().addLast("msg  encode ",new MsgpackEncoder());
                             ch.pipeline().addLast("msg  decode ",new MsgpackDecoder());
                             ch.pipeline().addLast(new NettyServerHandler());
