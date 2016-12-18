@@ -1,8 +1,9 @@
 package com.rain.nio.netty;
 
 
+import com.rain.nio.netty.msgpack.MsgpackDecoder;
+import com.rain.nio.netty.msgpack.MsgpackEncoder;
 import io.netty.bootstrap.ServerBootstrap;
-
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
@@ -14,11 +15,11 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 /**
  * Created by rain on 2016/12/15.
  */
-public class DiscardServer {
+public class NettyServer {
 
     private int port;
 
-    public DiscardServer(int port) {
+    public NettyServer(int port) {
         this.port = port;
     }
 
@@ -32,7 +33,9 @@ public class DiscardServer {
                     .childHandler(new ChannelInitializer<SocketChannel>() { // (4)
                         @Override
                         public void initChannel(SocketChannel ch) throws Exception {
-                            ch.pipeline().addLast(new DiscardServerHandler());
+                            ch.pipeline().addLast("msg  encode ",new MsgpackEncoder());
+                            ch.pipeline().addLast("msg  decode ",new MsgpackDecoder());
+                            ch.pipeline().addLast(new NettyServerHandler());
                         }
                     })
                     .option(ChannelOption.SO_BACKLOG, 128)          // (5)
@@ -52,7 +55,7 @@ public class DiscardServer {
     }
 
     public static void main(String[] args) throws Exception {
-        int port =8080;
-        new DiscardServer(port).run();
+        int port = 8080;
+        new NettyServer(port).run();
     }
 }

@@ -1,5 +1,7 @@
 package com.rain.nio.netty;
 
+import com.rain.nio.netty.msgpack.MsgpackDecoder;
+import com.rain.nio.netty.msgpack.MsgpackEncoder;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -13,7 +15,7 @@ import io.netty.channel.socket.nio.NioSocketChannel;
  * Created by chenyu on 2016/12/16.
  */
 
-public class TimeClient {
+public class NettyClient {
     public static void main(String[] args) throws Exception {
         String host = "127.0.0.1";//args[0];
         int port = 8080;
@@ -27,6 +29,8 @@ public class TimeClient {
             b.handler(new ChannelInitializer<SocketChannel>() {
                 @Override
                 public void initChannel(SocketChannel ch) throws Exception {
+                    ch.pipeline().addLast(new MsgpackDecoder());
+                    ch.pipeline().addLast(new MsgpackEncoder());
                     ch.pipeline().addLast(new ClientHandler());
                 }
             });

@@ -1,12 +1,7 @@
 package com.rain.nio.netty;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-
-import java.nio.charset.Charset;
 
 /**
  * Created by chenyu on 2016/12/16.
@@ -14,18 +9,27 @@ import java.nio.charset.Charset;
 public class ClientHandler extends ChannelInboundHandlerAdapter {
 
 
+    /**
+     *  tcp 三次握手成功后建立连接，发送资源，客户端先发送
+     * @param ctx
+     * @throws Exception
+     */
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
-        final ByteBuf buff = ctx.alloc().buffer(12); // (2)
-        buff.writeBytes("你好，服务器，我是客户端啊".getBytes(Charset.forName("UTF-8")));
-        ctx.writeAndFlush(buff);
+        Person person =  new Person();
+        person.setAge(18);
+        person.setName("客户端");
+        ctx.writeAndFlush(person);
     }
 
+    /**
+     * 接收成功后
+     * @param ctx
+     * @param msg
+     */
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
-        ByteBuf buf = (ByteBuf) msg;
-        System.out.println(buf.toString(Charset.forName("UTF-8")));
-
+        System.out.println("客户端："+msg);
     }
 
     @Override
