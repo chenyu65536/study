@@ -1,8 +1,11 @@
 package com.rain.nio.netty;
 
+import org.msgpack.annotation.Message;
+
 /**
  * Created by chenyu on 2016/12/16.
  */
+@Message//这个加上，要不会无法encode decode，debug  逐步执行才报错。。
 public class Person {
 
     private String name;

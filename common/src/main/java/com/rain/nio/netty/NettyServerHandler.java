@@ -1,33 +1,25 @@
 package com.rain.nio.netty;
 
+
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
 /**
- * Created by chenyu on 2016/12/16.
+ * Created by rain on 2016/12/15.
  */
-public class ClientHandler extends ChannelInboundHandlerAdapter {
-    /**
-     *  tcp 三次握手成功后建立连接，发送资源，客户端先发送
-     * @param ctx
-     * @throws Exception
-     */
+public class NettyServerHandler extends ChannelInboundHandlerAdapter { // (1)
+
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         Person person =  new Person();
-        person.setAge(18);
-        person.setName("客户端");
+        person.setAge(25);
+        person.setName("服务器");
         ctx.writeAndFlush(person);
     }
 
-    /**
-     * 接收成功后
-     * @param ctx
-     * @param msg
-     */
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
-        System.out.println("客户端："+msg);
+        System.out.println("服务器："+msg);
     }
 
     @Override
