@@ -2,6 +2,7 @@ package com.rain.algorithm;
 
 /**
  * Created by chenyu on 2017/3/13.
+ * 字符串 ：  查找子字符串
  */
 public class KMP {
     public static int NOT_FOUNT=-1;
