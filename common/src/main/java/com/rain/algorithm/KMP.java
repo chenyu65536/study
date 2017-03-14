@@ -5,13 +5,13 @@ package com.rain.algorithm;
  * 字符串 ：  查找子字符串
  */
 public class KMP {
-    public static int NOT_FOUNT=-1;
+    public static int NOT_FOUND=-1;
 
     public static int start(String[] parentStr,String[] subStr){
         for(int i=0;i<parentStr.length;i++){
             int offset=0;
             if(parentStr.length-i-1<subStr.length){//余下长度不足返回 失败
-                return KMP.NOT_FOUNT;
+                return KMP.NOT_FOUND;
             }
             for(int j=0+offset;j<subStr.length;j++){
                 if(parentStr[i+j].equals(subStr[j])){
@@ -26,7 +26,7 @@ public class KMP {
                 }
             }
         }
-        return NOT_FOUNT;
+        return NOT_FOUND;
     }
 
     public static void main(String[] args) {
