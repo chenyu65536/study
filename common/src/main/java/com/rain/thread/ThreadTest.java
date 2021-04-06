@@ -3,6 +3,8 @@ package com.rain.thread;
 
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
+import java.util.concurrent.locks.Lock;
+
 /**
  * Created by rain on 2016/11/30.
  */
