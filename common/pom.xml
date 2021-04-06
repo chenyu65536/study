@@ -10,7 +10,7 @@
     </parent>
     <properties>
         <springframework.version>4.2.5.RELEASE</springframework.version>
-        <netty.version>4.0.34.Final</netty.version>
+        <netty.version>4.1.42.Final</netty.version>
         <msgpack.version>0.6.12</msgpack.version>
     </properties>
 
