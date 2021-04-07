@@ -21,7 +21,7 @@ public class BinarySearch {
 
         while (true) {
             int mid = (left + right) / 2;
-            if (nums[left] > target || nums[right] < target) {
+            if (nums[left] > target || nums[right] < target || right-left==1) {
                 return -1;
             }
 
@@ -39,11 +39,13 @@ public class BinarySearch {
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{1, 2, 3, 4, 5, 6, 10, 10, 10, 26};
+        //int[] nums = new int[]{1, 2, 3, 4, 5, 6, 10, 10, 10, 26};
         //int[] nums = new int[]{1, 2, 3};
+//2,5,6,0,0,1,2
+       int[] nums = new int[]{0,0,1,2,2,5,6};
 
         BinarySearch search = new BinarySearch();
-        int index = search.search(nums, 27);
+        int index = search.search(nums, 3);
         System.out.printf("" + index);
 
     }
