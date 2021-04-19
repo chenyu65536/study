@@ -1,7 +1,4 @@
-package com.rain.leetcode;
-
-import java.util.HashSet;
-import java.util.Set;
+package com.rain.leetcode.medium;
 
 //
 // Trie() 初始化前缀树对象。
