@@ -3,6 +3,7 @@ package com.rain.thread;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.FutureTask;
 import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.AbstractQueuedSynchronizer;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -66,7 +67,8 @@ public class Test {
     //    queuedSynchronizer.tryAcquireNanos();
 
         ThreadPoolExecutor executor;
-
+        AtomicInteger atomicInteger = new AtomicInteger(10);
+        atomicInteger.addAndGet(1)
     }
 
 

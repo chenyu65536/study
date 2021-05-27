@@ -52,15 +52,6 @@ public class CollectionsTest {
         TreeSet treeSet = new TreeSet();
         treeSet.add("");
 
-        LinkedList linkedList = new LinkedList();
-        linkedList.add(11);
-
-        HashMap hashMap = new HashMap();
-        hashMap.put("1", "xx");
-        ArrayList arrayList = new ArrayList();
-        Hashtable hashtable = new Hashtable();
-
-
         TreeMap treeMap = new TreeMap();
         treeMap.put("", "");
     }
@@ -88,6 +79,7 @@ public class CollectionsTest {
     public void testCurrent() throws BrokenBarrierException, InterruptedException {
         ConcurrentHashMap concurrentHashMap = new ConcurrentHashMap();
         concurrentHashMap.put("", "");
+
         //ConcurrentTaskScheduler
 
         //Concurrent
@@ -108,7 +100,9 @@ public class CollectionsTest {
         LinkedTransferQueue: 由链表组成的无界阻塞队列，多了tryTransfer 和 transfer方法。transfer方法，能够把生产者元素立刻传输给消费者，如果没有消费者在等待，那就会放入队列的tail节点，并阻塞等待元素被消费了返回，可以使用带超时的方法。tryTransfer方法，会在没有消费者等待接收元素的时候马上返回false
 
         LinkedBlockingDeque: 由链表组成的双向阻塞队列，可以从队列的两端插入和移除元素*/
-
+        AbstractQueuedSynchronizer abstractQueuedSynchronizer;
+        LinkedList linkedList;
+        ArrayList arrayList = new ArrayList();
         testRecursion(9900);
     }
 
