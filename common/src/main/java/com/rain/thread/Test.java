@@ -68,7 +68,7 @@ public class Test {
 
         ThreadPoolExecutor executor;
         AtomicInteger atomicInteger = new AtomicInteger(10);
-        atomicInteger.addAndGet(1)
+        atomicInteger.addAndGet(1);
     }
 
 
