@@ -23,10 +23,7 @@ public class CollectionsTest {
 
     @SneakyThrows
     public void testMap() {
-        PriorityQueue a = new PriorityQueue();
-        //Entry extends WeakReference   16*0.75
-        WeakHashMap weakHashMap = new WeakHashMap();
-        weakHashMap.put("", "");
+
         //1.7 数组+Node单链表  16 * 0.75  >=8 &&hashMap.size>=64 红黑树
         HashMap hashMap = new HashMap();
         hashMap.put("1", 1);
@@ -36,6 +33,11 @@ public class CollectionsTest {
         //synchronized  Entry 性能差 11*0.75 k/v not null
         Hashtable hashtable = new Hashtable();
         hashtable.put("","");
+
+        PriorityQueue a = new PriorityQueue();
+        //Entry extends WeakReference   16*0.75
+        WeakHashMap weakHashMap = new WeakHashMap();
+        weakHashMap.put("", "");
         //数组
         List a1 = new ArrayList<>();
     }
