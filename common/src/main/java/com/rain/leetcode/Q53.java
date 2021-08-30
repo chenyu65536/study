@@ -57,11 +57,14 @@ package com.rain.leetcode;
 public class Q53 {
 
     public int maxSubArray(int[] nums) {
-        int preSum = nums[0];
+    /*    int[] sum = new int[nums.length];
+        sum[0] = nums[0];
         for (int i = 1; i < nums.length; i++) {
-            preSum = Math.max(preSum + nums[i], nums[i]);
-        }
-        return preSum;
+            if (sum[i - 1] + nums[i] > 0) {
+                sum[i]
+            }
+        }*/
+        return 0;//Math.max(currentSum, preSum);
     }
 
     public static void main(String[] args) {
