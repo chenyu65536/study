@@ -2,6 +2,7 @@ package com.rain.thread.future;
 
 
 import com.rain.thread.TimeMonitorSubscriber;
+import lombok.SneakyThrows;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
@@ -21,22 +22,18 @@ public class MyFutureTask<T> implements Runnable, TimeMonitorSubscriber {
     public MyFutureTask(Callable callable) {
         this.callable = callable;
         thread = new Thread(this);
-      //  thread.setName("测试线程");  Thread.currentThread().getName()  查看当前线程，方便调试
+        //  thread.setName("测试线程");  Thread.currentThread().getName()  查看当前线程，方便调试
     }
 
+    @SneakyThrows
     @SuppressWarnings("unchecked")
     public synchronized void run() {
-        try {
-            System.out.println("------thread  start-----");
-            Thread.sleep(2000L);
-            data = (T) callable.call();
-            isDone = true;
-            notifyAll();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        System.out.println("------thread  start-----");
+        Thread.sleep(2000L);
+        data = (T) callable.call();
+        isDone = true;
+        notifyAll();
+
     }
 
     public synchronized T get() throws InterruptedException {
@@ -66,7 +63,7 @@ public class MyFutureTask<T> implements Runnable, TimeMonitorSubscriber {
     }
 
     @Override
-    public void notifyTimeOut(){
+    public void notifyTimeOut() {
         thread.interrupted();
     }
 
