@@ -45,10 +45,6 @@ public class Q145 {
         if (root == null) {
             return rs;
         }
-        if (root.left == null && root.right==null) {
-            rs.add(root.val);
-        }
-
         if (root.left != null) {
            rs.addAll(postorderTraversal(root.left)) ;
         }
