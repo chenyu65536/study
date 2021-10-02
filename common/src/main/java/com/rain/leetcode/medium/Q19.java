@@ -56,22 +56,21 @@ import com.rain.leetcode.bean.ListNode;
 public class Q19 {
 
     public ListNode removeNthFromEnd2(ListNode head, int n) {
-
-        ListNode pre = head;
-        ListNode delPre = null;
+        ListNode fast = head;
+        ListNode slow = null;
         int step = 0;
-        while (pre.next != null) {
+        while (fast.next != null) {
             step++;
             if (step == n) {
-                delPre = head;
+                slow = head;
             } else if (step > n) {
-                delPre = delPre.next;
+                slow = slow.next;
             }
-            pre = pre.next;
+            fast = fast.next;
 
         }
-        if (delPre != null) {
-            delPre.next = delPre.next.next;
+        if (slow != null) {
+            slow.next = slow.next.next;
             return head;
         } else {
             return head.next;
