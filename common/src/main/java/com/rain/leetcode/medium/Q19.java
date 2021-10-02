@@ -54,6 +54,31 @@ import com.rain.leetcode.bean.ListNode;
  * }
  */
 public class Q19 {
+
+    public ListNode removeNthFromEnd2(ListNode head, int n) {
+
+        ListNode pre = head;
+        ListNode delPre = null;
+        int step = 0;
+        while (pre.next != null) {
+            step++;
+            if (step == n) {
+                delPre = head;
+            } else if (step > n) {
+                delPre = delPre.next;
+            }
+            pre = pre.next;
+
+        }
+        if (delPre != null) {
+            delPre.next = delPre.next.next;
+            return head;
+        } else {
+            return head.next;
+        }
+    }
+
+
     public ListNode removeNthFromEnd(ListNode head, int n) {
         int tailIdx = 0;
         ListNode current = head;
@@ -85,7 +110,7 @@ public class Q19 {
 
         Q19 q19 = new Q19();
 
-        ListNode rs = q19.removeNthFromEnd(node1, 3);
+        ListNode rs = q19.removeNthFromEnd2(node1, 3);
 
         System.out.printf("11");
     }
