@@ -54,31 +54,36 @@ package com.rain.leetcode.easy.e1;
 //
 
 
-
 // Related Topics 数组 双指针
 // 👍 684 👎 0
 public class Q27 {
 
     public static int removeElement(int[] nums, int val) {
-        if (nums == null || nums.length <= 0) {
+        if (nums == null || nums.length == 0) {
             return 0;
         }
-        int step = 0;
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] != val) {
-                nums[step] = nums[i];
-                step++;
+        int left = 0;
+        int right = nums.length - 1;
+        while (left < right) {
+            if (nums[left] != val) {
+                left++;
+            } else if (nums[right] != val) {
+                nums[left] = nums[right];
+                right--;
+            } else {
+                right--;
             }
         }
-        return step;
+        return nums[left] != val ? left + 1 : left;
     }
+
 
     public static void main(String[] args) {
         // nums = [3,2,2,3], val = 3,
         //          nums = [0,1,2,2,3,0,4,2], val = 2,
-       //[0,1,2,2,3,0,4,2]
-        int[] nums = {0, 1, 2, 2, 3, 0, 4, 2};
-        int result = removeElement(nums, 2);
+        //[0,1,2,2,3,0,4,2]
+        int[] nums = {3,2,2,3};
+        int result = removeElement(nums, 3);
 
         System.out.printf("111");
 
