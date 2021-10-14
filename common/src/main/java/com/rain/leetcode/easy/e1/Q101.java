@@ -50,18 +50,17 @@ public class Q101 {
         if (root == null) {
             return true;
         }
-       return compare(root.right, root.left);
+        return compare(root.left, root.right);
     }
 
-    public boolean compare(TreeNode node1, TreeNode node2) {
-        if (node1 == null && node2 == null) {
+    public boolean compare(TreeNode left, TreeNode right) {
+        if (left == null && right == null) {
             return true;
-        } else if (node1 == null || node2 == null) {
+        } else if (left == null || right == null) {
             return false;
-        } else if (node1.val != node2.val) {
-            return false;
-        }else {
-            return compare(node1.left,node2.right)&&compare(node1.right,node2.left);
+        } else if (left.val == right.val) {
+            return compare(left.left, right.right) && compare(left.right, right.left);
         }
+        return false;
     }
 }

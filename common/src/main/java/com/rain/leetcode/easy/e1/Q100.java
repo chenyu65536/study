@@ -71,9 +71,8 @@ public class Q100 {
             return false;
         } else if (p.val != q.val) {
             return false;
-        } else {
-            return isSameTree(p.left, q.left) && isSameTree(q.right, q.right);
         }
+        return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
     }
 
 
@@ -84,7 +83,7 @@ public class Q100 {
 
         TreeNode root2 = new TreeNode(1);
         TreeNode node2 = new TreeNode(2);
-        root2.right = node2;
+        root2.left = node2;
 
         isSameTree(root1, root2);
 
