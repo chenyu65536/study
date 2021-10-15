@@ -1,4 +1,4 @@
-package com.rain.leetcode;
+package com.rain.leetcode.unclassfy;
 
 //给定一个正整数数组 w ，其中 w[i] 代表下标 i 的权重（下标从 0 开始），请写一个函数 pickIndex ，它可以随机地获取下标 i，选取下标
 //i 的概率与 w[i] 成正比。

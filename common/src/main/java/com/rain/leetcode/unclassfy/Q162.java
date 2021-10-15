@@ -1,4 +1,4 @@
-package com.rain.leetcode;
+package com.rain.leetcode.unclassfy;
 
 //峰值元素是指其值严格大于左右相邻值的元素。
 //

@@ -1,4 +1,4 @@
-package com.rain.leetcode;
+package com.rain.leetcode.unclassfy;
 
 //第 i 个人的体重为 people[i]，每艘船可以承载的最大重量为 limit。
 //

@@ -1,4 +1,4 @@
-package com.rain.leetcode;
+package com.rain.leetcode.unclassfy;
 
 //一条包含字母 A-Z 的消息通过以下映射进行了 编码 ：
 //
@@ -66,7 +66,7 @@ package com.rain.leetcode;
 // s 只包含数字，并且可能包含前导零。
 //
 // Related Topics 字符串 动态规划
-public class Q91X {
+public class Q91_v2 {
 
     public int numDecodings(String s) {
         char[] chars = s.toCharArray();
@@ -76,46 +76,48 @@ public class Q91X {
         int[] dp = new int[s.length()];
         dp[0] = 1;
 
-        for (int i = 1; i < chars.length; i++) {
-            int currentNum = count(chars[i], chars[i - 1]);
-            if (currentNum == 0) {
+        for (int i = 0; i < chars.length; i++) {
+            int currentNum = count(chars[i], chars[i + 1]);
+            if (currentNum == -10) {
                 return 0;
             }
-            dp[i] = dp[i - 1] + currentNum;
+            int currentCount = count(chars[i], chars[i + 1]);
+            dp[i] = currentCount;
         }
         return dp[dp.length - 1];
     }
 
     private int count(char c1, char c2) {
         if (c1 == '0' && c2 == '0') {
-            return 0;
+            return -10;
         }
-        int numb = c1 - '0';
+        int numb1 = c1 - '0';
         int numb2 = c2 - '0';
-        numb = numb * 10 + numb2;
+
+        int numb = numb1 * 10 + numb2;
 
         if (numb > 26) {
-            if (numb % 10 == 0) {
-                return 0;
-            } else {
+            //只能看第一位
+            if (numb2 == 0) {//0不能做首位且首位要小于3
+                return -10;
+            }
+            return 1;
+        } else {//<=26
+            //只能看第一位
+            if (numb2 == 0) {//0不能做首位且首位要小于3
                 return 1;
             }
-        } else {
-            if (numb % 10 == 0) {
-                return 1;
-            } else {
-                return 2;
-            }
+            return 2;
         }
     }
 
 
     public static void main(String[] args) {
-        Q91X q91 = new Q91X();
-        System.out.printf("" + q91.numDecodings("11106"));
-        System.out.printf("" + q91.numDecodings("12"));
-        System.out.printf("" + q91.numDecodings("226"));
-        System.out.printf("" + q91.numDecodings("0"));
-        System.out.printf("" + q91.numDecodings("06"));
+        Q91_v2 q91 = new Q91_v2();
+        System.out.println("" + q91.numDecodings("11106"));
+        System.out.println("" + q91.numDecodings("12"));
+        System.out.println("" + q91.numDecodings("226"));
+        System.out.println("" + q91.numDecodings("0"));
+        System.out.println("" + q91.numDecodings("06"));
     }
 }

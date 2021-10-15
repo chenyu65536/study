@@ -1,4 +1,4 @@
-package com.rain.leetcode;
+package com.rain.leetcode.unclassfy;
 //给定一个包含非负整数的数组，你的任务是统计其中可以组成三角形三条边的三元组个数。
 //
 // 示例 1:
