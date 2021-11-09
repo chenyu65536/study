@@ -59,24 +59,24 @@ import java.util.List;
  */
 public class Q530 {
 
-    public static int getMinimumDifference(TreeNode root) {
-        List<Integer> rs = new ArrayList<>();
-        dfs(root, rs);
+    private Integer pre = null;
+    private int min = Integer.MAX_VALUE;
 
-        int min = rs.get(1) - rs.get(0);
-        for (int i = 2; i < rs.size(); i++) {
-            min = Math.min(rs.get(i) - rs.get(i - 1), min);
-        }
+    public int getMinimumDifference(TreeNode root) {
+        dfs(root);
         return min;
     }
 
-    public static void dfs(TreeNode node, List<Integer> rs) {
+    public void dfs(TreeNode node) {
         if (node == null) {
             return;
         }
-        dfs(node.left, rs);
-        rs.add(node.val);
-        dfs(node.right, rs);
+        dfs(node.left);
+        if (pre != null) {
+            min = Math.min(min, node.val - pre);
+        }
+        pre = node.val;
+        dfs(node.right);
     }
 
 
@@ -89,13 +89,14 @@ public class Q530 {
          *   / \
          *  1  3
          */
-        TreeNode node1 = new TreeNode(236);
-        TreeNode node2 = new TreeNode(104);
-        TreeNode node3 = new TreeNode(701);
-        TreeNode node4 = null;
-        TreeNode node5 = new TreeNode(227);
+        //4,2,6,1,3
+        TreeNode node1 = new TreeNode(4);
+        TreeNode node2 = new TreeNode(2);
+        TreeNode node3 = new TreeNode(6);
+        TreeNode node4 = new TreeNode(1);
+        TreeNode node5 = new TreeNode(3);
         TreeNode node6 = null;
-        TreeNode node7 = new TreeNode(911);
+        TreeNode node7 =null;
 
         node1.left = node2;
         node1.right = node3;
@@ -116,7 +117,8 @@ public class Q530 {
          * 	   104       701
          * 	null 227   null 911
          */
-        int rs = getMinimumDifference(node1);
+        Q530 q530 = new Q530();
+        int rs = q530.getMinimumDifference(node1);
 
         System.out.printf("" + rs);
     }

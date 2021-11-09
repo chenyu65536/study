@@ -1,12 +1,10 @@
 package com.rain;
 
-import com.sun.tools.internal.jxc.SchemaGenerator;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Random;
 
 /**
  * @author chenyu
@@ -45,11 +43,4 @@ public class Test {
         a.set(10L);
 
     }
-
-
-    public static void main(String[] args) {
-        System.out.printf(""+(new Random()).nextInt(200));
-    }
-
-
 }
