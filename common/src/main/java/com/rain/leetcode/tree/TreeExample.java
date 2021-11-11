@@ -2,9 +2,11 @@ package com.rain.leetcode.tree;
 
 import com.rain.leetcode.bean.TreeNode;
 
+import java.util.Random;
+
 public class TreeExample {
 
-    public void example(){
+    public TreeNode buildTree1(){
         /**
          *     3
          *    / \
@@ -23,10 +25,12 @@ public class TreeExample {
 
         node3.left = node4;
         node3.right = node5;
+
+        return node1;
     }
 
 
-    public void example2(){
+    public TreeNode buildTree2(){
 
         /**
          * 	[5,4,8,11,null,13,4,7,2,null,null,5,1]
@@ -69,9 +73,11 @@ public class TreeExample {
         node7.left = node12;
         node7.right = node13;
 
+        return node1;
+
     }
 
-    public void example3(){
+    public TreeNode buildTree3(){
         /**
          *
          * 解答失败:
@@ -93,6 +99,9 @@ public class TreeExample {
 
         node1.left = node2;
         node1.right = node3;
+
+        return node1;
+
 
 
     }
