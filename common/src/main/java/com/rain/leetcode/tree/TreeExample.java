@@ -2,11 +2,34 @@ package com.rain.leetcode.tree;
 
 import com.rain.leetcode.bean.TreeNode;
 
-import java.util.Random;
 
 public class TreeExample {
 
-    public TreeNode buildTree1(){
+    public static TreeNode buildBSTree1(){
+        /**
+         *     10
+         *    / \
+         *   9  20
+         *     /  \
+         *    15   21
+         */
+        TreeNode node1 = new TreeNode(10);
+        TreeNode node2 = new TreeNode(9);
+        TreeNode node3 = new TreeNode(20);
+        TreeNode node4 = new TreeNode(15);
+        TreeNode node5 = new TreeNode(21);
+
+        node1.left = node2;
+        node1.right = node3;
+
+        node3.left = node4;
+        node3.right = node5;
+
+        return node1;
+    }
+
+
+    public static TreeNode buildTree1(){
         /**
          *     3
          *    / \
@@ -30,7 +53,7 @@ public class TreeExample {
     }
 
 
-    public TreeNode buildTree2(){
+    public static TreeNode buildTree2(){
 
         /**
          * 	[5,4,8,11,null,13,4,7,2,null,null,5,1]
@@ -77,7 +100,7 @@ public class TreeExample {
 
     }
 
-    public TreeNode buildTree3(){
+    public static TreeNode buildTree3(){
         /**
          *
          * 解答失败:
