@@ -57,18 +57,17 @@ package com.rain.leetcode.unclassfy;
 public class Q53 {
 
     public int maxSubArray(int[] nums) {
-    /*    int[] sum = new int[nums.length];
-        sum[0] = nums[0];
+        int sum = nums[0];
+        int maxSum = nums[0];
         for (int i = 1; i < nums.length; i++) {
-            if (sum[i - 1] + nums[i] > 0) {
-                sum[i]
-            }
-        }*/
-        return 0;//Math.max(currentSum, preSum);
+            sum = Math.max(sum + nums[i], nums[i]);
+            maxSum = Math.max(maxSum,sum);
+        }
+        return maxSum;
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{-2, 1, -3, 4, -1, 2, 1, -5, 4};
+        int[] nums = new int[]{-2,1,-3,4,-1,2,1,-5,4};
         Q53 q53 = new Q53();
         System.out.printf("" + q53.maxSubArray(nums));
     }
