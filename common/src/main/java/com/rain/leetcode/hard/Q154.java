@@ -105,5 +105,6 @@ public class Q154 {
         Q154 q154 = new Q154();
         int min = q154.findMin(nums);
         System.out.printf("" + min);
+
     }
 }

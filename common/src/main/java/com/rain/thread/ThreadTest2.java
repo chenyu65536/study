@@ -12,15 +12,15 @@ public class ThreadTest2 {
 
 
 
-    public static void execute() {
-        Thread thread = new Thread();
-        thread.start();
+    public static void test() {
+        ThreadLocal threadLocal = new ThreadLocal();
+       // threadLocal.set();
 
 
     }
 
     public static void main(String[] args) {
-        execute();
+        //execute();
     }
 
 }
