@@ -68,6 +68,7 @@ public class CollectionsTest {
         ThreadLocal threadLocal = new ThreadLocal();
         CyclicBarrier cyclicBarrier = new CyclicBarrier(10);
         cyclicBarrier.await();
+        cyclicBarrier.reset();
         AtomicInteger atomicInteger;
         AtomicStampedReference atomicStampedReference;
         ReentrantLock reentrantLock;
@@ -106,6 +107,10 @@ public class CollectionsTest {
         LinkedList linkedList;
         ArrayList arrayList = new ArrayList();
         testRecursion(9900);
+
+        CopyOnWriteArrayList c = new CopyOnWriteArrayList(new ArrayList());
+        c.add(null);
+        c.get(1);
     }
 
 

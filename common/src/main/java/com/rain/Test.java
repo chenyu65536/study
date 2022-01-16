@@ -41,6 +41,7 @@ public class Test {
 
         ThreadLocal<Long> a = new ThreadLocal<>();
         a.set(10L);
+        a.get();
 
     }
 }

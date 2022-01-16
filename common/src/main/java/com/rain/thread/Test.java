@@ -1,8 +1,9 @@
 package com.rain.thread;
 
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.FutureTask;
-import java.util.concurrent.ThreadPoolExecutor;
+import lombok.SneakyThrows;
+
+import java.util.Random;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.AbstractQueuedSynchronizer;
 import java.util.concurrent.locks.Lock;
@@ -16,13 +17,24 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class Test {
 
+    @SneakyThrows
     public void testCountDownLatch() {
         CountDownLatch countDownLatch = new CountDownLatch(10);
-      //  countDownLatch.await();
+        countDownLatch.await();
     }
 
+    @SneakyThrows
     public void method1(){
-        System.out.println("method1");
+        Exchanger<Integer> exchanger = new Exchanger<> ();
+        exchanger.exchange(1);
+
+        //高并发 cas 种子  性能会差
+        Random random = new Random();
+        random.nextInt();
+        //每个线程维护一个种子  性能好
+        ThreadLocalRandom localRandom =  ThreadLocalRandom.current();
+        localRandom.nextInt();
+
 
     }
 
