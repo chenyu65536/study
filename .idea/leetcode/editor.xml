@@ -290,6 +290,15 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="/var/folders/l5/kv95b9rj1s76s6_w106dhbx80000gp/T/leetcode/editor/cn/[1405]最长快乐字符串.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="/var/folders/l5/kv95b9rj1s76s6_w106dhbx80000gp/T/leetcode/editor/cn/doc/content/[1405]最长快乐字符串.md" />
+              <option name="path" value="/var/folders/l5/kv95b9rj1s76s6_w106dhbx80000gp/T/leetcode/editor/cn/[1405]最长快乐字符串.java" />
+              <option name="questionId" value="1304" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="/var/folders/l5/kv95b9rj1s76s6_w106dhbx80000gp/T/leetcode/editor/cn/[141]环形链表.java">
           <value>
             <LeetcodeEditor>
@@ -866,6 +875,15 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="/var/folders/l5/kv95b9rj1s76s6_w106dhbx80000gp/T/leetcode/editor/cn/[309]最佳买卖股票时机含冷冻期.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="/var/folders/l5/kv95b9rj1s76s6_w106dhbx80000gp/T/leetcode/editor/cn/doc/content/[309]最佳买卖股票时机含冷冻期.md" />
+              <option name="path" value="/var/folders/l5/kv95b9rj1s76s6_w106dhbx80000gp/T/leetcode/editor/cn/[309]最佳买卖股票时机含冷冻期.java" />
+              <option name="questionId" value="309" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="/var/folders/l5/kv95b9rj1s76s6_w106dhbx80000gp/T/leetcode/editor/cn/[310]最小高度树.java">
           <value>
             <LeetcodeEditor>
@@ -1340,6 +1358,15 @@
               <option name="contentPath" value="/var/folders/l5/kv95b9rj1s76s6_w106dhbx80000gp/T/leetcode/editor/cn/doc/content/[70]爬楼梯.md" />
               <option name="path" value="/var/folders/l5/kv95b9rj1s76s6_w106dhbx80000gp/T/leetcode/editor/cn/[70]爬楼梯.java" />
               <option name="questionId" value="70" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="/var/folders/l5/kv95b9rj1s76s6_w106dhbx80000gp/T/leetcode/editor/cn/[714]买卖股票的最佳时机含手续费.java">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="/var/folders/l5/kv95b9rj1s76s6_w106dhbx80000gp/T/leetcode/editor/cn/doc/content/[714]买卖股票的最佳时机含手续费.md" />
+              <option name="path" value="/var/folders/l5/kv95b9rj1s76s6_w106dhbx80000gp/T/leetcode/editor/cn/[714]买卖股票的最佳时机含手续费.java" />
+              <option name="questionId" value="714" />
             </LeetcodeEditor>
           </value>
         </entry>
