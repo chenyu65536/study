@@ -20,6 +20,7 @@ public class Test {
     @SneakyThrows
     public void testCountDownLatch() {
         CountDownLatch countDownLatch = new CountDownLatch(10);
+        countDownLatch.countDown();
         countDownLatch.await();
     }
 
@@ -27,6 +28,7 @@ public class Test {
     public void method1(){
         Exchanger<Integer> exchanger = new Exchanger<> ();
         exchanger.exchange(1);
+        exchanger.exchange(2);
 
         //高并发 cas 种子  性能会差
         Random random = new Random();

@@ -35,6 +35,7 @@ public class CollectionsTest {
         hashtable.put("","");
 
         PriorityQueue a = new PriorityQueue();
+        a.add(null);
         //Entry extends WeakReference   16*0.75
         WeakHashMap weakHashMap = new WeakHashMap();
         weakHashMap.put("", "");
@@ -42,10 +43,17 @@ public class CollectionsTest {
         List a1 = new ArrayList<>();
     }
 
-    public void testSet() {
+    public static void testSet() {
         //通过hashmap 去重
-        HashSet hashSet = new HashSet();
+        HashSet hashSet = new HashSet(20);
         hashSet.add("a");
+        hashSet.add("3");
+        hashSet.add("2");
+        hashSet.add("4");
+        hashSet.add("b");
+        hashSet.add("z");
+        hashSet.add("c");
+
 
         //linkHashmap
         LinkedHashSet linkedHashSet = new LinkedHashSet();
@@ -56,7 +64,11 @@ public class CollectionsTest {
 
         TreeMap treeMap = new TreeMap();
         treeMap.put("", "");
+
+        IdentityHashMap identityHashMap = new IdentityHashMap();
+        identityHashMap.put("a","");
     }
+
 
     public void testSet2() throws BrokenBarrierException, InterruptedException {
         StringBuilder stringBuilder = new StringBuilder();
@@ -66,6 +78,9 @@ public class CollectionsTest {
         stringBuffer.append("a");
 
         ThreadLocal threadLocal = new ThreadLocal();
+        threadLocal.set("x");
+        threadLocal.remove();
+
         CyclicBarrier cyclicBarrier = new CyclicBarrier(10);
         cyclicBarrier.await();
         cyclicBarrier.reset();
@@ -90,6 +105,7 @@ public class CollectionsTest {
     }
 
     public static void main(String[] args) {
+        testSet();
         //Map;
        // AbstractQueuedSynchronizer s;
         //ArrayBlockingQueue arrayBlockingQueue = new ArrayBlockingQueue(10);
@@ -103,14 +119,14 @@ public class CollectionsTest {
         LinkedTransferQueue: 由链表组成的无界阻塞队列，多了tryTransfer 和 transfer方法。transfer方法，能够把生产者元素立刻传输给消费者，如果没有消费者在等待，那就会放入队列的tail节点，并阻塞等待元素被消费了返回，可以使用带超时的方法。tryTransfer方法，会在没有消费者等待接收元素的时候马上返回false
 
         LinkedBlockingDeque: 由链表组成的双向阻塞队列，可以从队列的两端插入和移除元素*/
-        AbstractQueuedSynchronizer abstractQueuedSynchronizer;
+       /* AbstractQueuedSynchronizer abstractQueuedSynchronizer;
         LinkedList linkedList;
         ArrayList arrayList = new ArrayList();
         testRecursion(9900);
 
         CopyOnWriteArrayList c = new CopyOnWriteArrayList(new ArrayList());
         c.add(null);
-        c.get(1);
+        c.get(1);*/
     }
 
 
