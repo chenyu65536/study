@@ -78,5 +78,6 @@ public class Q22 {
         Q22 q22 = new Q22();
         List<String> rs = q22.generateParenthesis(3);
         System.out.printf("" + rs);
+
     }
 }
