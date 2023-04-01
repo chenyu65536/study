@@ -36,7 +36,8 @@ public class NettyServer {
                         @Override
                         public void initChannel(SocketChannel ch) throws Exception {
                             //解决 半包黏包问题
-                            ch.pipeline().addLast(new LengthFieldBasedFrameDecoder(65536, 0, 2, 0, 2))
+                            ch.pipeline()
+                                    .addLast(new LengthFieldBasedFrameDecoder(65536, 0, 2, 0, 2))
                                     .addLast(new LengthFieldPrepender(2))
                                     .addLast(new MsgpackEncoder())
                                     .addLast(new MsgpackDecoder())

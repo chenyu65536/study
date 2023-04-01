@@ -28,11 +28,11 @@
 
 
     <repositories>
-        <repository>
+<!--        <repository>
             <id>aliyun-library-releases</id>
             <name>aliyun-releases</name>
             <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-        </repository>
+        </repository>-->
         <repository>
             <id>centra3</id>
             <name>centra3</name>
