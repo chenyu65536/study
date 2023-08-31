@@ -31,8 +31,9 @@ package com.rain.leetcode.medium;
 
 import java.util.ArrayList;
 import java.util.List;
+
 //TODO 23/08/30
-public class Q416 {
+public class Q416_X {
 
     public boolean canPartition(int[] nums) {
         if (nums == null || nums.length == 1) {
@@ -54,19 +55,22 @@ public class Q416 {
     List<Integer> used = new ArrayList<>();
 
     public boolean backTrack(int[] nums, int preSum, int target, int startIndex) {
+        if (preSum == target) {
+            return true;
+        }
         for (int i = startIndex; i < nums.length; i++) {
-            if(used.contains(i)){
+            if (used.contains(i)) {
                 continue;
             }
             used.add(i);
             preSum += nums[i];
-            if (preSum == target) {
-                return true;
-            }
             if (preSum > target) {
                 used.remove(used.size() - 1);
                 preSum -= nums[i];
-                backTrack(nums, preSum, target, i);
+            }
+            boolean rs = backTrack(nums, preSum, target, i + 1);
+            if(rs){
+                return true;
             }
         }
         return false;
@@ -76,8 +80,8 @@ public class Q416 {
         //输入：nums = [1,5,11,5]
         //输出：true
         //解释：数组可以分割成 [1, 5, 5] 和 [11] 。
-        int[] nums = new int[]{9, 1, 2, 4, 10};
-        Q416 q416 = new Q416();
+        int[] nums = new int[]{1,2,3,4,5,6,7};
+        Q416_X q416 = new Q416_X();
         boolean rs = q416.canPartition(nums);
         System.out.printf("__" + rs);
     }
