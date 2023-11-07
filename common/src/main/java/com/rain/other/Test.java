@@ -1,8 +1,16 @@
 package com.rain.other;
 
+import java.util.HashSet;
+
 public class Test {
 
     public static void main(String[] args) {
-        System.out.printf((1*0.3==0.3)+"");
+        HashSet<Character> characterSet = new HashSet<Character>() {{
+            add('a');
+            add('e');
+            add('i');
+            add('o');
+            add('u');
+        }};
     }
 }
