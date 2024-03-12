@@ -39,15 +39,15 @@ package com.rain.leetcode.medium;
 // 注意：本题与主站 739 题相同： https://leetcode-cn.com/problems/daily-temperatures/
 //
 // Related Topics 栈 数组 单调栈 👍 99 👎 0
-
+/*
 import javafx.util.Pair;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.List;*/
 
 public class LCR38 {
 
-    public int[] dailyTemperatures(int[] temperatures) {
+/*    public int[] dailyTemperatures(int[] temperatures) {
         List<Pair<Integer, Integer>> pairList = new ArrayList<>();
         for (int i = 0; i < temperatures.length; i++) {
             pairList.add(new Pair<>(temperatures[i], i));
@@ -57,14 +57,14 @@ public class LCR38 {
     }
 
     public static void main(String[] args) {
-      /*
+      *//*
         测试用例:[73,74,75,71,69,72,76,73]
         测试结果:[1,1,4,2,-1,-5,0,-6]
         期望结果:[1,1,4,2,1,1,0,0]
-        */
+        *//*
         int[] nums = new int[]{73, 74, 75, 71, 69, 72, 76, 73};
         LCR38 lcr38 = new LCR38();
         int[] rs = lcr38.dailyTemperatures(nums);
         System.out.printf("" + rs);
-    }
+    }*/
 }
