@@ -60,53 +60,42 @@ public class Q93 {
     List<String> temp = new ArrayList<>();
 
     private void backTrack(String s, int startIndex) {
-        if (startIndex == s.length() - 1) {
-            rs.add(String.join(".", temp));
+        if (startIndex == s.length()) {
+            String ip = String.join(".", temp);
+            if (ip.length() == s.length() + 3) {
+                rs.add(ip);
+            }
             return;
         }
         for (int i = startIndex; i < s.length(); i++) {
-            if (isOk(s, startIndex, 1)) {
-                temp.add(s.substring(startIndex, startIndex + 1));
-                backTrack(s, startIndex + 1);
-                temp.remove(temp.size() - 1);
+            if (temp.size() > 3 || (s.length() - i) > (4 - temp.size()) * 3) {
+                return;
             }
-
-            if (isOk(s, startIndex, 2)) {
-                temp.add(s.substring(startIndex, startIndex + 2));
-                backTrack(s, startIndex + 2);
-                temp.remove(temp.size() - 1);
-            }
-
-            if (isOk(s, startIndex, 3)) {
-                temp.add(s.substring(startIndex, startIndex + 3));
-                backTrack(s, startIndex + 3);
-                temp.remove(temp.size() - 1);
+            for (int j = i; j < i + 3 && j < s.length(); j++) {
+                String subAddress = s.substring(i, j + 1);
+                if (isOk(subAddress)) {
+                    temp.add(subAddress);
+                    backTrack(s, j + 1);
+                    temp.remove(temp.size() - 1);
+                }
             }
         }
     }
 
-    private boolean isOk(String str, int startIndex, int length) {
-        if (str.length() < startIndex + length + 1) {
+    private boolean isOk(String str) {
+        if (str.isEmpty() || (str.charAt(0) == '0' && str.length() > 1)) {
             return false;
         }
-        str = str.substring(startIndex, startIndex + length + 1);
-        if (str.startsWith("0") && str.length() > 1) {
-            return false;
-        }
-
-        int num = Integer.parseInt(str);
-        if (num < 0 || num > 255) {
-            return false;
-        }
-        return true;
+        int subAddress = Integer.parseInt(str);
+        return subAddress <= 255;
     }
 
     public static void main(String[] args) {
         String s = "25525511135";
-//输出：["255.255.11.135","255.255.111.35"]
+        //输出：["255.255.11.135","255.255.111.35"]
 
         Q93 q93 = new Q93();
         List<String> rs = q93.restoreIpAddresses(s);
-        System.out.printf("11");
+        System.out.printf("" + rs);
     }
 }

@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.*;
 import java.util.concurrent.locks.LockSupport;
 
 /**
@@ -54,5 +55,8 @@ public class Test {
         Integer a = 15;
         Integer b = 15;
         System.out.printf(""+(a==b));
+        Map<Integer, Integer> map1 = null;
+        List<Integer> nums = new ArrayList<>();
+        //Arrays.sort(nums);
     }
 }
