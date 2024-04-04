@@ -18,7 +18,7 @@ public class Q2808 {
             }
             rs = Math.min(rs, maxDistance);
         }
-        return (int) Math.ceil(rs / 2d);
+        return rs / 2;
     }
 
     public static void main(String[] args) {

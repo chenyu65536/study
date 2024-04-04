@@ -48,7 +48,6 @@ package com.rain.leetcode.medium;
 //
 // Related Topics 栈 设计 数据流 单调栈 👍 391 👎 0
 
-import javafx.util.Pair;
 
 import java.util.Stack;
 

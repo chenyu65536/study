@@ -43,9 +43,9 @@ public class BinarySearch {
         //int[] nums = new int[]{1, 2, 3};
 //2,5,6,0,0,1,2
        int[] nums = new int[]{0,0,1,2,2,5,6};
-
-        BinarySearch search = new BinarySearch();
+           BinarySearch search = new BinarySearch();
         int index = search.search(nums, 3);
+
         System.out.printf("" + index);
 
     }
