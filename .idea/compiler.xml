@@ -18,6 +18,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="common" options="-Xlint:unchecked" />
+      <module name="study" options="-Xlint:unchecked" />
     </option>
   </component>
 </project>

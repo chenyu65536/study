@@ -1,9 +1,7 @@
 package com.rain.leetcode.math;
 
-import com.sun.jmx.remote.internal.ArrayQueue;
 
 import java.util.*;
-import java.util.concurrent.ArrayBlockingQueue;
 
 //写一个 RecentCounter 类来计算特定时间范围内最近的请求。
 //

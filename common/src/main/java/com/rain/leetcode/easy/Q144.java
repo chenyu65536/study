@@ -56,7 +56,6 @@ package com.rain.leetcode.easy;
 //leetcode submit region begin(Prohibit modification and deletion)
 
 import com.rain.leetcode.bean.TreeNode;
-import com.sun.jmx.remote.internal.ArrayQueue;
 
 import java.util.ArrayList;
 import java.util.List;
