@@ -54,7 +54,6 @@ package com.rain.leetcode.medium;
 //
 // Related Topics 数组 哈希表 字符串 排序 堆（优先队列） 👍 36 👎 0
 
-import javafx.util.Pair;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -63,7 +62,7 @@ public class Q2512 {
 
     public List<Integer> topStudents(String[] positive_feedback, String[] negative_feedback, String[] report, int[] student_id, int k) {
 
-        Map<String, Integer> feedback = new HashMap<>();
+       /* Map<String, Integer> feedback = new HashMap<>();
         Arrays.stream(positive_feedback).forEach(key -> feedback.put(key, 3));
         Arrays.stream(negative_feedback).forEach(key -> feedback.put(key, -1));
 
@@ -92,8 +91,8 @@ public class Q2512 {
         while (i < k) {
             rs.add(iterator.next().getKey());
             i++;
-        }
-        return rs;
+        }*/
+        return null;
     }
 
     public static void main(String[] args) {

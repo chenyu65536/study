@@ -1,7 +1,6 @@
 package com.rain.collection;
 
 import lombok.SneakyThrows;
-import sun.misc.Unsafe;
 
 import java.util.*;
 import java.util.concurrent.*;
@@ -110,7 +109,7 @@ public class CollectionsTest {
         condition.await();
         condition.signal();
 
-     Unsafe.getUnsafe().compareAndSwapInt(null,1,1,1);
+   //  Unsafe.getUnsafe().compareAndSwapInt(null,1,1,1);
      //lock.tryLock(1, 10);
 
         /*  ExecutorService executorService = Executors.newFixedThreadPool(10);
