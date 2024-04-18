@@ -7,8 +7,6 @@ public class Q832 {
                 int temp = image[i][j];
                 image[i][j] = (image[i][image.length - j - 1] + 1) % 2;
                 image[i][image.length - j - 1] = (temp + 1) % 2;
-                /*image[i][j] = image[i][image.length - j - 1];
-                image[i][image.length - j - 1] = temp;*/
             }
             if (image.length % 2 == 1) {
                 image[i][image.length / 2]= (image[i][image.length / 2] + 1) % 2;
