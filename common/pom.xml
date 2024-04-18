@@ -45,12 +45,6 @@
             <version>RELEASE</version>
             <scope>compile</scope>
         </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.22</version>
-            <scope>compile</scope>
-        </dependency>
 
         <dependency>
             <groupId>javax.validation</groupId>
@@ -62,6 +56,12 @@
             <artifactId>lombok</artifactId>
             <version>1.18.20</version>
             <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-base</artifactId>
+            <version>11</version>
         </dependency>
     </dependencies>
 
