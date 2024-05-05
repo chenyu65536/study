@@ -7,6 +7,7 @@ public class Q1652 {
             return new int[length];
         }
         //计算开始结束的下标，每次遍历+1，类似前缀和
+
         int[] sum = new int[length];
         int startIndex = k > 0 ? 1 : length + k;
         int endIndex = startIndex + Math.abs(k);
