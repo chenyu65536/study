@@ -1,8 +1,5 @@
 package com.rain.leetcode.medium;
 
-import java.util.List;
-import java.util.Map;
-
 public class Q97 {
 
     char[] chars1;
@@ -32,8 +29,6 @@ public class Q97 {
         if (j >= 0 && chars2[j] == chars3[m]) {
             return dfs(i, j - 1, m - 1);
         }
-        Map a=null;
-        List<Integer> ss = null;
         return false;
     }
 }
