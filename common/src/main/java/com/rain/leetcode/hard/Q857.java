@@ -28,5 +28,6 @@ public class Q857 {
                 pq.offer(q);
             }
         }
+        return cost;
     }
 }
