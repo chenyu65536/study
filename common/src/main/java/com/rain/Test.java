@@ -52,11 +52,19 @@ public class Test {
 
 
     public static void main(String[] args) {
-        Integer a = 15;
+        PriorityQueue<Integer>[] counts = new PriorityQueue[26];
+ /*       Integer a = 15;
         Integer b = 15;
         System.out.printf(""+(a==b));
         Map<Integer, Integer> map1 = null;
         List<Integer> nums = new ArrayList<>();
         //Arrays.sort(nums);
+
+        LinkedList<Integer[]> list = new LinkedList<>();
+        Map<Integer, Integer> map = new HashMap<>();*/
+
+        for (int i=0;i<0;i++){
+            System.out.printf("111");
+        }
     }
 }

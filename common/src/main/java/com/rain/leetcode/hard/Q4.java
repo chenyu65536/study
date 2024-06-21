@@ -3,47 +3,38 @@ package com.rain.leetcode.hard;
 public class Q4 {
 
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        int total = nums1.length + nums2.length;
-        int rightIndex = 0;
-        int leftIndex = 0;
-        if (total % 2 == 0) {
-            rightIndex = total / 2;
-            leftIndex = rightIndex - 1;
-        } else {
-            rightIndex = total / 2;
-            leftIndex = rightIndex;
+        int len1 = nums1.length, len2 = nums2.length;
+        int mid = (len1 + len2) / 2;//奇数
+        if (len1 == 0 || len2 == 0) {
+            int mid1 = mid;
+            if ((len1 + len2) % 2 == 0) {
+                mid1 = mid - 1;
+            }
+            return len1 == 0 ? (nums2[mid1] + nums2[mid]) / 2D : (nums1[mid1] + nums1[mid]) / 2D;
         }
-
-        int num1StartIndex = Math.max(nums1.length / 4 - 1, 0);
-        int num2StartIndex = Math.max(nums2.length / 4 - 1, 0);
-
-        int i = num1StartIndex, j = num2StartIndex;
-        int leftVal = 0;
-        int rightVal = 0;
-        while (i + j < leftIndex) {
-            int curVal = 0;
-            if (nums1[i] < nums2[j]) {
-                curVal = nums1[i];
+        //偶数 mid-1,mid
+        int i = 0, j = 0;
+        int[] nums = new int[2];
+        while (i + j <= mid) {
+            if (i < len1 && (j >= len2 || nums1[i] <= nums2[j])) {
+                nums[(i + j) % 2] = nums1[i];
                 i++;
-            } else {
-                curVal = nums2[j];
+            } else if (j < len2) {
+                nums[(i + j) % 2] = nums2[j];
                 j++;
             }
-            if (i + j == rightIndex) {
-                rightVal = curVal;
-            }
-            if (i + j == leftIndex) {
-                leftVal = curVal;
-            }
+        }
+        if ((len1 + len2) % 2 == 1) {
+            return (double) Math.max(nums[0], nums[1]);
         }
 
-        return ((double) rightVal + leftVal) / 2;
+        return (nums[0] + nums[1]) / 2D;
     }
 
     public static void main(String[] args) {
         Q4 q4 = new Q4();
-        int[] nums1 = {1, 3};
-        int[] nums2 = {2};
+        int[] nums1 = {3};
+        int[] nums2 = {-2,-1};
         System.out.println(q4.findMedianSortedArrays(nums1, nums2));
 
     }

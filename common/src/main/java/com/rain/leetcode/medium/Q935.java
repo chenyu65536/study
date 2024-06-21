@@ -1,56 +1,56 @@
 package com.rain.leetcode.medium;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class Q935 {
     public static int knightDialer(int n) {
         if (n == 1) {
             return 10;
         }
-        Map<Integer, Integer[]> maps = new HashMap<Integer, Integer[]>() {{
-            put(0, new Integer[]{4, 6});
-            put(1, new Integer[]{6, 8});
-            put(2, new Integer[]{7, 9});
-            put(3, new Integer[]{4, 8});
-            put(4, new Integer[]{0, 3, 9});
-            put(5, new Integer[]{});
-            put(6, new Integer[]{0, 1, 7});
-            put(7, new Integer[]{2, 6});
-            put(8, new Integer[]{1, 3});
-            put(9, new Integer[]{2, 4});
-        }};
-        //[, , , , , , , , , , , , , , , , , , , ]
-        //40 60   0=>4  404,406 604,606  4*2 6*2
-        //61 81   1=>4  616 618 816 818  6*2 8*2
-        //72 92   2=>4  727 729 927 929  7*2 9*2
-        //43 83   3=>4  434 834 438 838  4*2 8*2
-        //04 34 94 4=>9                  0*3 3*3 9*3
-        //06 16 76 6=>9                  0*3 1*3 7*3
-        //27 67    7=>4                  2*2 6*2
-        //18 38    8=>4                  1*2 3*2
-        //29 49    9=>4                  2*2 4*2
-        int[] preEndNumCount = new int[10];
-        int[] currentEndNumCount = new int[10];
-        for (int i = 2; i <= n; i++) {
-            for (int j = 0; j < preEndNumCount.length; j++) {
-                Integer[] nums = maps.get(j);
-                for (Integer num : nums) {
-                    currentEndNumCount[num] = currentEndNumCount[num] + preEndNumCount[j] + 1;
+        //1,2,3
+        //4,5,6
+        //7,8,9
+        //*,0,*
+        //[04, 06, 16, 18, 27, 29, 34, 38, 40, 43, 49, 60, 61, 67, 72,76, 81, 83, 92, 94]
+        List<Integer>[] numMap = new List[10];
+        numMap[0] = Arrays.asList(4, 6);
+        numMap[1] = Arrays.asList(6, 8);
+        numMap[2] = Arrays.asList(7, 9);
+        numMap[3] = Arrays.asList(4, 8);
+        numMap[4] = Arrays.asList(0, 3, 9);
+
+        numMap[5] = Collections.EMPTY_LIST;
+
+        numMap[6] = Arrays.asList(0, 1, 7);
+        numMap[7] = Arrays.asList(2, 6);
+        numMap[8] = Arrays.asList(1, 3);
+        numMap[9] = Arrays.asList(2, 4);
+        int[] nums = new int[]{2, 2, 2, 2, 3, 0, 3, 2, 2, 2};//尾号个数
+        //最后一次允许 拨号到5
+        for (int i = 3; i <= n; i++) {
+            //0,3,9->4    0,1,7->6
+            int[] newNums = new int[10];//尾号个数
+            for (int j = 0; j < 10; j++) {
+                if (nums[j] == 0) {
+                    continue;
+                }
+                for (int num : numMap[j]) {
+                    newNums[num] = (newNums[num] + nums[j]) % 1000000007;
                 }
             }
-            preEndNumCount = currentEndNumCount;
-            currentEndNumCount = new int[10];
+            nums = newNums;
         }
         int rs = 0;
-        for (int i = 0; i < preEndNumCount.length; i++) {
-            rs += preEndNumCount[i];
+        for (int num : nums) {
+            rs += num;
         }
         return rs;
     }
 
     public static void main(String[] args) {
-        int rs = knightDialer(3);
+        int rs = knightDialer(3131);
         System.out.printf("" + rs);
     }
+
 }
+

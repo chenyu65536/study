@@ -41,37 +41,54 @@ package com.rain.leetcode.medium;
 // Related Topics 深度优先搜索 广度优先搜索 图 拓扑排序 👍 1677 👎 0
 
 import java.util.*;
-//TODO
+
 public class Q207 {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
-        Map<Integer, List<Integer>> dependMap = new HashMap<>();
-        for (int i = 0; i < prerequisites.length; i++) {
-            List<Integer> depends = dependMap.get(prerequisites[i][0]);
-            if (depends == null) {
-                depends = new ArrayList<>();
-                dependMap.put(prerequisites[i][0], depends);
-            }
-            depends.add(prerequisites[i][1]);
-        }
-        //查找入度为0 则为安全
-        //入度为1，且依赖 上个节点
-        //计算节点数
-        Set<Integer> safeNodes = new HashSet<>();
-        for (int i = 0; i < numCourses; i++) {
-            if (!dependMap.containsKey(i)) {
-                safeNodes.add(i);
-            }
-        }
-        for (int i = 0; i < numCourses; i++) {
+        List<Integer>[] graph = new ArrayList[numCourses];
 
+        for (int i = 0; i < numCourses; i++) {
+            graph[i] = new ArrayList<>();
         }
-        return safeNodes.size() == numCourses;
+
+        for (int i = 0; i < prerequisites.length; i++) {
+            graph[prerequisites[i][0]].add(prerequisites[i][1]);
+        }
+        Set<Integer> finish = new HashSet<>();
+        Queue<Integer> unfinish = new ArrayDeque<>();
+        for (int i = 0; i < numCourses; i++) {
+            if (graph[i].isEmpty()) {
+                finish.add(i);
+            } else {
+                unfinish.offer(i);
+            }
+        }
+        int k = unfinish.size();
+        while (k > 0 && !unfinish.isEmpty()) {
+            int count = unfinish.size();
+            while (count > 0) {
+                int c = unfinish.poll();
+                if (finish.containsAll(graph[c])) {
+                    finish.add(c);
+                } else {
+                    unfinish.offer(c);
+                }
+                count--;
+            }
+            k--;
+        }
+        return finish.size() == numCourses;
     }
 
 
     public static void main(String[] args) {
-        int numCourses = 2;
-        int[][] prerequisites = new int[][]{{0, 1}, {0, 2}, {1, 2}};
+        int numCourses = 7;
+        //0,1],[3,1],[1,3],[3,2
+        //int[][] prerequisites = new int[][]{{0, 1}, {3, 1}, {1, 3}, {3, 2}};
+        // int[][] prerequisites = new int[][]{{1,0}};
+        // int[][] prerequisites = new int[][]{{0, 1}, {0, 2}, {1, 2}};
+       // int[][] prerequisites = new int[][]{{0, 10}, {3, 18}, {5, 5}, {6, 11}, {11, 14}, {13, 1}, {15, 1}, {17, 4}};
+       // int[][] prerequisites = new int[][]{{1, 4}, {2, 4}, {3, 1}, {3, 2}};
+        int[][] prerequisites = new int[][]{{1,0},{0,3},{0,2},{3,2},{2,5},{4,5},{5,6},{2,4}};
         Q207 q207 = new Q207();
         boolean rs = q207.canFinish(numCourses, prerequisites);
         System.out.printf("" + rs);
