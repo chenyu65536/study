@@ -7,9 +7,6 @@ public class Q97 {
     char[] chars3;
 
     public boolean isInterleave(String s1, String s2, String s3) {
-      /*  if (s1 == null || s2 == null) {
-            return StringUtils.equals(s1, s3) || StringUtils.equals(s2, s3);
-        }*/
         if (s1.length() + s2.length() != s3.length()) {
             return false;
         }
@@ -33,13 +30,5 @@ public class Q97 {
             return dfs(i, j - 1, m - 1);
         }
         return false;
-    }
-
-    public static void main(String[] args) {
-        String s1 = "aabc", s2 = "abad", s3 = "aabadabc";
-        //s1 = "aa",s2 = "abad",s3 = "aabada";
-        Q97 q97 = new Q97();
-        boolean rs = q97.isInterleave(s1,s2,s3);
-        System.out.printf("11");
     }
 }

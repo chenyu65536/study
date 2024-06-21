@@ -23,10 +23,10 @@ public class Q1652 {
     }
 
     public static void main(String[] args) {
-        int[] code = {5,7,1,4};
+        int[] code = {5, 7, 1, 4};
         int k = 3;
-        code = new int[]{2,4,9,3};
-         k =-2;
-        decrypt(code,k);
+        code = new int[]{2, 4, 9, 3};
+        k = -2;
+        decrypt(code, k);
     }
 }

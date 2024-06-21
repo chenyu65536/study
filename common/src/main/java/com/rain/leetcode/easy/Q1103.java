@@ -1,43 +1,32 @@
 package com.rain.leetcode.easy;
 
 public class Q1103 {
-    public int[] distributeCandies(int candies, int num_people) {
+    public static int[] distributeCandies(int candies, int num_people) {
         int times = 0;
         int left = candies;
-        int total = (1 + num_people) / 2 * num_people;
-        while (left > total) {
-            //1 ~num
-            //1 ~ num +n*num_people
-            left -= total;
+        int need = (1 + num_people) * num_people / 2;
+        while (left >= need) {
+            left -= need;
             times++;
-            total = total + times * num_people;
+            need = need + num_people * num_people;
         }
 
         int[] rs = new int[num_people];
         if (times > 0) {
             for (int i = 0; i < num_people; i++) {
-                rs[i] = (times + 1) / 2 * (times - 1) * num_people;
+                rs[i] = (times - 1) * times * num_people / 2 + times * (i + 1);
             }
         }
+
         for (int i = 0; i < num_people; i++) {
-            int add = i + 1 + times * num_people;
-            if (left >= add) {
-                rs[i] += add;
-            } else {
-                rs[i] += left;
-                break;
-            }
+            int add = Math.min(times * num_people + i + 1, left);
+            rs[i] += add;
             left -= add;
         }
         return rs;
     }
 
     public static void main(String[] args) {
-        Q1103 q1103 = new Q1103();
-        // int[] rs = q1103.distributeCandies(60, 4);
-        //int[] rs = q1103.distributeCandies(7, 4);
-        int[] rs = q1103.distributeCandies(60, 4);
-        System.out.printf("11");
+        distributeCandies(60, 4);
     }
-
 }
