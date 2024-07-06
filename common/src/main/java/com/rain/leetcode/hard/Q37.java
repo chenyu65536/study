@@ -2,7 +2,6 @@ package com.rain.leetcode.hard;
 
 public class Q37 {
 
-
     char[][] board;
     boolean[][] rowUsed = new boolean[9][9];
     boolean[][] columnUsed = new boolean[9][9];

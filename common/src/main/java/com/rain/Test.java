@@ -15,56 +15,37 @@ import java.util.concurrent.locks.LockSupport;
  */
 public class Test {
 
-    public static void readFileContent(String fileName) {
-        File file = new File(fileName);
-        BufferedReader reader = null;
-        StringBuffer sbf = new StringBuffer();
-        try {
-            reader = new BufferedReader(new FileReader(file));
-            String tempStr;
-            while ((tempStr = reader.readLine()) != null) {
-                System.out.println(tempStr.replaceAll("\t",","));
+    public static int maximumLength(int[] nums) {
+        //全偶数 or 奇数 %=0
+
+        int oddStartCount = 0;
+        int evenStartCount = 0;
+        int oddEvenStartCount = 1;
+
+        boolean oddEvenStartStartFlag = (nums[0]%2==0);
+
+
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]%2==0){
+                evenStartCount++;
+            }else{
+                oddStartCount++;
             }
-            reader.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (reader != null) {
-                try {
-                    reader.close();
-                } catch (IOException e1) {
-                    e1.printStackTrace();
-                }
+            if(i>0 && oddEvenStartStartFlag!=(nums[i]%2==0)){
+                oddEvenStartCount++;
+                oddEvenStartStartFlag = !oddEvenStartStartFlag;
             }
         }
 
-        Thread thread = new Thread();
-        thread.interrupt();
-
-        ThreadLocal<Long> a = new ThreadLocal<>();
-        a.set(10L);
-        a.get();
-
-
-        LockSupport.park();
-
+        int rs1 = Math.max(evenStartCount,oddStartCount);
+        return Math.max(rs1,oddEvenStartCount);
+        //奇数+偶数
     }
 
 
     public static void main(String[] args) {
-        PriorityQueue<Integer>[] counts = new PriorityQueue[26];
- /*       Integer a = 15;
-        Integer b = 15;
-        System.out.printf(""+(a==b));
-        Map<Integer, Integer> map1 = null;
-        List<Integer> nums = new ArrayList<>();
-        //Arrays.sort(nums);
-
-        LinkedList<Integer[]> list = new LinkedList<>();
-        Map<Integer, Integer> map = new HashMap<>();*/
-
-        for (int i=0;i<0;i++){
-            System.out.printf("111");
-        }
+        maximumLength(new int[]{3,7,6});
+        Map<String,Integer> memo = new HashMap();
+        BitSet set = new BitSet();
     }
 }
