@@ -30,12 +30,7 @@ public class Q2732 {
     }
 
     public static void main(String[] args) {
-        Q2732 q2732 = new Q2732();
-     /*   List<Integer> rs = q2732.goodSubsetofBinaryMatrix(new int[][]{
-                {0, 1, 1, 0},
-                {0, 0, 0, 1},
-                {1, 1, 1, 1},
-        });*/
+        Q2732 q2732  = new Q2732();
 
         List<Integer> rs = q2732.goodSubsetofBinaryMatrix(new int[][]{
                 {0, 1, 0, 1, 0},

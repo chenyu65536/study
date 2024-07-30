@@ -15,16 +15,37 @@ import java.util.concurrent.locks.LockSupport;
  */
 public class Test {
 
-    public static void readFileContent(String fileName) {
+    public static int maximumLength(int[] nums) {
+        //全偶数 or 奇数 %=0
+
+        int oddStartCount = 0;
+        int evenStartCount = 0;
+        int oddEvenStartCount = 1;
+
+        boolean oddEvenStartStartFlag = (nums[0]%2==0);
+
+
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]%2==0){
+                evenStartCount++;
+            }else{
+                oddStartCount++;
+            }
+            if(i>0 && oddEvenStartStartFlag!=(nums[i]%2==0)){
+                oddEvenStartCount++;
+                oddEvenStartStartFlag = !oddEvenStartStartFlag;
+            }
+        }
+
+        int rs1 = Math.max(evenStartCount,oddStartCount);
+        return Math.max(rs1,oddEvenStartCount);
+        //奇数+偶数
     }
 
 
     public static void main(String[] args) {
-        System.out.printf(""+(0%10));
-        HashSet<String> items  = new HashSet<>();
-        for(String str:items){
-
-        }
+        maximumLength(new int[]{3,7,6});
+        Map<String,Integer> memo = new HashMap();
+        BitSet set = new BitSet();
     }
-
 }
