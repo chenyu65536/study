@@ -55,6 +55,8 @@ package com.rain.leetcode.medium;
 // Related Topics 数组 双指针
 // 👍 445 👎 0
 
+import java.util.List;
+
 public class Q80 {
 
     public int removeDuplicates(int[] nums) {
@@ -63,7 +65,7 @@ public class Q80 {
         }
         int i = 0;
         int stepLength = 0;
-        for (int j = 1; j < nums.length- stepLength; j++) {
+        for (int j = 1; j < nums.length - stepLength; j++) {
             if (nums[i] != nums[j]) {
                 i = j;
             } else if (j - i > 1 && nums[i] == nums[j]) {
@@ -81,7 +83,49 @@ public class Q80 {
                 }
             }
         }
-        return nums.length-stepLength;
+        return nums.length - stepLength;
+    }
+
+
+    public int removeDuplicates2(int[] nums) {
+        int length = nums.length;
+        int j = 0;
+        for (int i = 0; i < length; ) {
+            nums[j] = nums[i];
+
+            int cnt = 1;
+            while (i + 1 < length && nums[i + 1] == nums[j]) {
+                cnt++;
+                i++;
+            }
+            if (cnt > 1) {
+                nums[j + 1] = nums[j];
+                j++;
+            }
+            i++;
+            j++;
+
+        }
+        return j;
+    }
+
+
+    public int removeDuplicates3(int[] nums) {
+        int i = 0, j = 0, length = nums.length;
+        while (i < length) {
+            nums[j] = nums[i];
+            int cnt = 0;
+            while (i < length && nums[i] == nums[j]) {
+                i++;
+                cnt++;
+            }
+            if (cnt >= 2) {
+                nums[j + 1] = nums[j];//出现多次，只保留2次
+                j++;
+            }
+            j++;
+        }
+        return j;
     }
 
     public void move(int[] nums, int startIndex, int moveLength) {
@@ -101,12 +145,12 @@ public class Q80 {
          */
         //int[] a = {1, 1, 1, 2, 2, 3};
         //int[] a = {0, 0, 1, 1, 1, 1, 2, 3, 3};
-        int[] a = {0,0,1,1,1,2,2,2,3,3,4};
+        int[] a = {0, 0, 1, 1, 1, 1, 2, 3, 3};
         //int[] a = {1, 1, 1};
-         //int[] a = {1, 1, 1, 1};
+        //int[] a = {1, 1, 1, 1};
         Q80 q80 = new Q80();
         //  q80.move(a, 1, 2);
-        int length = q80.removeDuplicates(a);
+        int length = q80.removeDuplicates3(a);
         System.out.printf("" + length);
     }
 
